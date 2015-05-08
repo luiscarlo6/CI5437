@@ -1,3 +1,22 @@
+psvn-for-ci5437/Lesson01a/sliding_tile1x3.c
+psvn-for-ci5437/Lesson01a/sliding_tile1x3.succ
+psvn-for-ci5437/Lesson01b/slidejump07.c
+psvn-for-ci5437/Lesson01b/slidejump07.succ
+psvn-for-ci5437/ProblemDomains/ArrowPuzzle/3Arrow.psvn
+psvn-for-ci5437/ProblemDomains/ArrowPuzzle/genArrowStd
+psvn-for-ci5437/ProblemDomains/N_Puzzle/
+psvn-for-ci5437/ProblemDomains/PancakePuzzle/genPancake
+psvn-for-ci5437/ProblemDomains/RubiksCube/Makefile
+psvn-for-ci5437/ProblemDomains/RubiksCube/README
+psvn-for-ci5437/ProblemDomains/RubiksCube/dist.cpp
+psvn-for-ci5437/ProblemDomains/RubiksCube/distSummary.cpp
+psvn-for-ci5437/ProblemDomains/TopSpin/genTopSpinBasic
+
+psvn-for-ci5437/Lesson01b/slidejump07.psvn
+psvn-for-ci5437/Lesson03/distSummary.cpp
+
+
+
 # Compiled Object files
 *.slo
 *.lo
