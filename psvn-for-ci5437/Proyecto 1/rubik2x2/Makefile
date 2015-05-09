@@ -37,4 +37,4 @@ priority_queue.hpp:
 
 .PHONY: clean
 clean:
-	rm -f *.dist *.distSummary *.o  priority_queue.hpp hanoi4p03d.c  hanoi4p03d_bad.c psvn2c_core.c psvn2c_state_map.c psvn2c_abstraction.c *~
+	rm -f dist.cpp distSummary.cpp *.dist *.distSummary *.o  priority_queue.hpp rubik2Sticker.c psvn2c_core.c psvn2c_state_map.c psvn2c_abstraction.c *~
