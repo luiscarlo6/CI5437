@@ -106,9 +106,8 @@ int main(int argc, char *argv[])
 
 
     cout << "\n# 1 state variable is the blank 'B' the others goes from 1 to 15.\n";
-    for (int i=0;i<max-1;i++)
-        cout << "15N ";
-    cout << "B ";
+    for (int i=0;i<max;i++)
+        cout << "15 ";
     cout << "\n\n";
 
     for (int i=0; i<N;i++) {  // create the rules for flipping bits i and i+1
@@ -125,27 +124,27 @@ int main(int argc, char *argv[])
                             break;
                         if(l == currentpos - 4){
                             tstr = tstr + "X ";
-                            tstr2 = tstr2 + "B ";
+                            tstr2 = tstr2 + "0 ";
                             print = 1;
                             continue;
                         }
                     }else if(k == 1){ // We use 1 to indicate the blank moves to the right
-                        if(j == 15)
+                        if(j == max -1)
                             break;
                         if(l == currentpos + 1){
                             tstr = tstr + "X ";
-                            tstr2 = tstr2 + "B ";
+                            tstr2 = tstr2 + "0 ";
                             print = 1;
                             continue;
                         }
                     }/* This comment is cause we dont want duplicate moves in the psvn like 
-                      *  BX = XB and XB = BX
+                      *  0X = X0 and X0 = 0X
                         else if(k == 2){ // We use 2 to indicate the blank moves down
-                        if(i == 4)
+                        if(i == N)
                             break;
-                        if(l == currentpos + 4){
+                        if(l == currentpos + N){
                             tstr = tstr + "X ";
-                            tstr2 = tstr2 + "B ";
+                            tstr2 = tstr2 + "0 ";
                             print = 1;
                             continue;
                         }
@@ -154,13 +153,13 @@ int main(int argc, char *argv[])
                             break;
                         if(l == currentpos - 1){
                             tstr = tstr + "X ";
-                            tstr2 = tstr2 + "B ";
+                            tstr2 = tstr2 + "0 ";
                             print = 1;
                             continue;
                         }
                     }*/
                     if(l == currentpos){ // if the position of the str match the B position
-                        tstr = tstr + "B ";
+                        tstr = tstr + "0 ";
                         tstr2 = tstr2 + "X ";
                     }else{
                         tstr = tstr + "- ";
@@ -176,8 +175,8 @@ int main(int argc, char *argv[])
             }
         }
     }
-    cout << "\nGOAL B ";
-    for (int i=1;i<max;i++)  { cout << i << " "; } // in the goal, all arrows point down
+    cout << "\nGOAL ";
+    for (int i=0;i<max;i++)  { cout << i << " "; } // in the goal, all arrows point down
     cout << endl ;
     exit(0);
 }
