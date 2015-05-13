@@ -16,6 +16,9 @@ psvn2c_abstraction.c:
 	../psvn2c  $(PSVNOPT) --name=$(*F)  < $< > $@
 	rm -f ./psvn2c_core.c ./psvn2c_state_map.c ./psvn2c_abstraction.c
 
+%.dist: %.c dist.cpp priority_queue.hpp
+	$(CXX) $(OPT) dist.cpp -include $< -o $@
+
 .PRECIOUS: %.c
 
 %.succ: %.c succ.c
@@ -23,4 +26,4 @@ psvn2c_abstraction.c:
 
 .PHONY : clean
 clean:
-	rm -f *.succ *.o slidejump07.c psvn2c_core.c psvn2c_state_map.c psvn2c_abstraction.c *~
+	rm -f *.succ *.dist *.o slidejump07.c psvn2c_core.c psvn2c_state_map.c psvn2c_abstraction.c *~

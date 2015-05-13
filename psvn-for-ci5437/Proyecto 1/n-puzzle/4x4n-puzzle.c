@@ -41,11 +41,11 @@ typedef struct {
  funcptr my_funcptr;
 } ruleid_iterator_t;
 
-#define num_fwd_rules 27
-#define num_bwd_rules 27
-static const char *fwd_rule_name[ 27 ] = { "rule_1", "rule_2", "rule_3", "rule_4", "rule_5", "rule_6", "rule_7", "rule_8", "rule_9", "rule_10", "rule_11", "rule_12", "rule_13", "rule_14", "rule_15", "rule_16", "rule_17", "rule_18", "rule_19", "rule_20", "rule_21", "rule_22", "rule_23", "rule_24", "rule_25", "rule_26", "rule_27" };
+#define num_fwd_rules 51
+#define num_bwd_rules 51
+static const char *fwd_rule_name[ 51 ] = { "MOVE00_RIGHT", "MOVE00_DOWN", "MOVE01_RIGHT", "MOVE01_DOWN", "MOVE01_LEFT", "MOVE02_RIGHT", "MOVE02_DOWN", "MOVE02_LEFT", "MOVE03_RIGHT", "MOVE03_DOWN", "MOVE03_LEFT", "MOVE10_UP", "MOVE10_RIGHT", "MOVE10_DOWN", "MOVE11_UP", "MOVE11_RIGHT", "MOVE11_DOWN", "MOVE11_LEFT", "MOVE12_UP", "MOVE12_RIGHT", "MOVE12_DOWN", "MOVE12_LEFT", "MOVE13_UP", "MOVE13_RIGHT", "MOVE13_DOWN", "MOVE13_LEFT", "MOVE20_UP", "MOVE20_RIGHT", "MOVE20_DOWN", "MOVE21_UP", "MOVE21_RIGHT", "MOVE21_DOWN", "MOVE21_LEFT", "MOVE22_UP", "MOVE22_RIGHT", "MOVE22_DOWN", "MOVE22_LEFT", "MOVE23_UP", "MOVE23_RIGHT", "MOVE23_DOWN", "MOVE23_LEFT", "MOVE30_UP", "MOVE30_RIGHT", "MOVE31_UP", "MOVE31_RIGHT", "MOVE31_LEFT", "MOVE32_UP", "MOVE32_RIGHT", "MOVE32_LEFT", "MOVE33_UP", "MOVE33_LEFT" };
 #define get_fwd_rule_label( ruleid ) (fwd_rule_name[(ruleid)]) 
-static const char *bwd_rule_name[ 27 ] = { "rule_1", "rule_2", "rule_3", "rule_4", "rule_5", "rule_6", "rule_7", "rule_8", "rule_9", "rule_10", "rule_11", "rule_12", "rule_13", "rule_14", "rule_15", "rule_16", "rule_17", "rule_18", "rule_19", "rule_20", "rule_21", "rule_22", "rule_23", "rule_24", "rule_25", "rule_26", "rule_27" };
+static const char *bwd_rule_name[ 51 ] = { "MOVE00_RIGHT", "MOVE00_DOWN", "MOVE01_RIGHT", "MOVE01_DOWN", "MOVE01_LEFT", "MOVE02_RIGHT", "MOVE02_DOWN", "MOVE02_LEFT", "MOVE03_RIGHT", "MOVE03_DOWN", "MOVE03_LEFT", "MOVE10_UP", "MOVE10_RIGHT", "MOVE10_DOWN", "MOVE11_UP", "MOVE11_RIGHT", "MOVE11_DOWN", "MOVE11_LEFT", "MOVE12_UP", "MOVE12_RIGHT", "MOVE12_DOWN", "MOVE12_LEFT", "MOVE13_UP", "MOVE13_RIGHT", "MOVE13_DOWN", "MOVE13_LEFT", "MOVE20_UP", "MOVE20_RIGHT", "MOVE20_DOWN", "MOVE21_UP", "MOVE21_RIGHT", "MOVE21_DOWN", "MOVE21_LEFT", "MOVE22_UP", "MOVE22_RIGHT", "MOVE22_DOWN", "MOVE22_LEFT", "MOVE23_UP", "MOVE23_RIGHT", "MOVE23_DOWN", "MOVE23_LEFT", "MOVE30_UP", "MOVE30_RIGHT", "MOVE31_UP", "MOVE31_RIGHT", "MOVE31_LEFT", "MOVE32_UP", "MOVE32_RIGHT", "MOVE32_LEFT", "MOVE33_UP", "MOVE33_LEFT" };
 #define get_bwd_rule_label( ruleid ) (bwd_rule_name[(ruleid)]) 
 #define cost_of_cheapest_fwd_rule 1
 #define cost_of_costliest_fwd_rule 1
@@ -76,6 +76,26 @@ static void fwdrule1( const state_t *state, state_t *child_state )
 
 static void fwdrule2( const state_t *state, state_t *child_state )
 {
+  child_state->vars[ 0 ] = state->vars[ 4 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = 0;
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule3( const state_t *state, state_t *child_state )
+{
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 2 ];
   child_state->vars[ 2 ] = 0;
@@ -94,7 +114,47 @@ static void fwdrule2( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule3( const state_t *state, state_t *child_state )
+static void fwdrule4( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 5 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = 0;
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule5( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = 0;
+  child_state->vars[ 1 ] = state->vars[ 0 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule6( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -114,7 +174,47 @@ static void fwdrule3( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule4( const state_t *state, state_t *child_state )
+static void fwdrule7( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 6 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = 0;
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule8( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = 0;
+  child_state->vars[ 2 ] = state->vars[ 1 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule9( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -134,7 +234,47 @@ static void fwdrule4( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule5( const state_t *state, state_t *child_state )
+static void fwdrule10( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 7 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = 0;
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule11( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = 0;
+  child_state->vars[ 3 ] = state->vars[ 2 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule12( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = 0;
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -154,7 +294,7 @@ static void fwdrule5( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule6( const state_t *state, state_t *child_state )
+static void fwdrule13( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -174,7 +314,27 @@ static void fwdrule6( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule7( const state_t *state, state_t *child_state )
+static void fwdrule14( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 8 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = 0;
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule15( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = 0;
@@ -194,7 +354,7 @@ static void fwdrule7( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule8( const state_t *state, state_t *child_state )
+static void fwdrule16( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -214,7 +374,47 @@ static void fwdrule8( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule9( const state_t *state, state_t *child_state )
+static void fwdrule17( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 9 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = 0;
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule18( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = 0;
+  child_state->vars[ 5 ] = state->vars[ 4 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule19( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -234,7 +434,7 @@ static void fwdrule9( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule10( const state_t *state, state_t *child_state )
+static void fwdrule20( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -254,7 +454,47 @@ static void fwdrule10( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule11( const state_t *state, state_t *child_state )
+static void fwdrule21( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 10 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = 0;
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule22( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = 0;
+  child_state->vars[ 6 ] = state->vars[ 5 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule23( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -274,7 +514,7 @@ static void fwdrule11( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule12( const state_t *state, state_t *child_state )
+static void fwdrule24( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -294,7 +534,47 @@ static void fwdrule12( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule13( const state_t *state, state_t *child_state )
+static void fwdrule25( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 11 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = 0;
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule26( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = 0;
+  child_state->vars[ 7 ] = state->vars[ 6 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule27( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -314,7 +594,7 @@ static void fwdrule13( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule14( const state_t *state, state_t *child_state )
+static void fwdrule28( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -334,7 +614,27 @@ static void fwdrule14( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule15( const state_t *state, state_t *child_state )
+static void fwdrule29( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 12 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = 0;
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule30( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -354,7 +654,7 @@ static void fwdrule15( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule16( const state_t *state, state_t *child_state )
+static void fwdrule31( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -374,7 +674,47 @@ static void fwdrule16( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule17( const state_t *state, state_t *child_state )
+static void fwdrule32( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 13 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = 0;
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule33( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = 0;
+  child_state->vars[ 9 ] = state->vars[ 8 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule34( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -394,7 +734,7 @@ static void fwdrule17( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule18( const state_t *state, state_t *child_state )
+static void fwdrule35( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -414,7 +754,47 @@ static void fwdrule18( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule19( const state_t *state, state_t *child_state )
+static void fwdrule36( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 14 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = 0;
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule37( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = 0;
+  child_state->vars[ 10 ] = state->vars[ 9 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule38( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -434,7 +814,7 @@ static void fwdrule19( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule20( const state_t *state, state_t *child_state )
+static void fwdrule39( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -454,7 +834,47 @@ static void fwdrule20( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule21( const state_t *state, state_t *child_state )
+static void fwdrule40( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 15 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = 0;
+}
+
+static void fwdrule41( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = 0;
+  child_state->vars[ 11 ] = state->vars[ 10 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule42( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -474,7 +894,7 @@ static void fwdrule21( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule22( const state_t *state, state_t *child_state )
+static void fwdrule43( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -494,7 +914,7 @@ static void fwdrule22( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule23( const state_t *state, state_t *child_state )
+static void fwdrule44( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -514,7 +934,7 @@ static void fwdrule23( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule24( const state_t *state, state_t *child_state )
+static void fwdrule45( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -534,7 +954,27 @@ static void fwdrule24( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule25( const state_t *state, state_t *child_state )
+static void fwdrule46( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = 0;
+  child_state->vars[ 13 ] = state->vars[ 12 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule47( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -554,7 +994,7 @@ static void fwdrule25( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void fwdrule26( const state_t *state, state_t *child_state )
+static void fwdrule48( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -574,7 +1014,27 @@ static void fwdrule26( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = 0;
 }
 
-static void fwdrule27( const state_t *state, state_t *child_state )
+static void fwdrule49( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = 0;
+  child_state->vars[ 14 ] = state->vars[ 13 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void fwdrule50( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -594,97 +1054,189 @@ static void fwdrule27( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 11 ];
 }
 
-static actfuncptr fwd_rules[ 27 ] = { fwdrule1, fwdrule2, fwdrule3, fwdrule4, fwdrule5, fwdrule6, fwdrule7, fwdrule8, fwdrule9, fwdrule10, fwdrule11, fwdrule12, fwdrule13, fwdrule14, fwdrule15, fwdrule16, fwdrule17, fwdrule18, fwdrule19, fwdrule20, fwdrule21, fwdrule22, fwdrule23, fwdrule24, fwdrule25, fwdrule26, fwdrule27 };
+static void fwdrule51( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = 0;
+  child_state->vars[ 15 ] = state->vars[ 14 ];
+}
+
+static actfuncptr fwd_rules[ 51 ] = { fwdrule1, fwdrule2, fwdrule3, fwdrule4, fwdrule5, fwdrule6, fwdrule7, fwdrule8, fwdrule9, fwdrule10, fwdrule11, fwdrule12, fwdrule13, fwdrule14, fwdrule15, fwdrule16, fwdrule17, fwdrule18, fwdrule19, fwdrule20, fwdrule21, fwdrule22, fwdrule23, fwdrule24, fwdrule25, fwdrule26, fwdrule27, fwdrule28, fwdrule29, fwdrule30, fwdrule31, fwdrule32, fwdrule33, fwdrule34, fwdrule35, fwdrule36, fwdrule37, fwdrule38, fwdrule39, fwdrule40, fwdrule41, fwdrule42, fwdrule43, fwdrule44, fwdrule45, fwdrule46, fwdrule47, fwdrule48, fwdrule49, fwdrule50, fwdrule51 };
+
+static int fwdfn15_a0_3( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = NULL;
+  return 40;
+}
+
+static int fwdfn15_a0_2( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn15_a0_3;
+  return 39;
+}
 
 static int fwdfn15_a0_1( const state_t *state, void *next_func )
 {
-  *((funcptr *)next_func) = NULL;
-  return 25;
+  *((funcptr *)next_func) = fwdfn15_a0_2;
+  return 38;
 }
 
 static int fwdfn15( const state_t *state, void *next_func )
 {
-  if( state->vars[ 14 ] == 0 ) {
+  if( state->vars[ 11 ] == 0 ) {
     *((funcptr *)next_func) = fwdfn15_a0_1;
-    return 24;
+    return 37;
   } else {
     return -1;
   }
 }
 
-static int fwdfn14_a0_1( const state_t *state, void *next_func )
+static int fwdfn14_a0_3( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = fwdfn15;
-  return 23;
+  return 36;
+}
+
+static int fwdfn14_a0_2( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn14_a0_3;
+  return 35;
+}
+
+static int fwdfn14_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn14_a0_2;
+  return 34;
 }
 
 static int fwdfn14( const state_t *state, void *next_func )
 {
-  if( state->vars[ 13 ] == 0 ) {
+  if( state->vars[ 10 ] == 0 ) {
     *((funcptr *)next_func) = fwdfn14_a0_1;
-    return 22;
+    return 33;
   } else {
     return fwdfn15( state, next_func );
   }
 }
 
-static int fwdfn13_a0_1( const state_t *state, void *next_func )
+static int fwdfn13_a0_3( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = fwdfn14;
-  return 21;
+  return 32;
+}
+
+static int fwdfn13_a0_2( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn13_a0_3;
+  return 31;
+}
+
+static int fwdfn13_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn13_a0_2;
+  return 30;
 }
 
 static int fwdfn13( const state_t *state, void *next_func )
 {
-  if( state->vars[ 12 ] == 0 ) {
+  if( state->vars[ 9 ] == 0 ) {
     *((funcptr *)next_func) = fwdfn13_a0_1;
-    return 20;
+    return 29;
   } else {
     return fwdfn14( state, next_func );
   }
 }
 
-static int fwdfn12_a0_1( const state_t *state, void *next_func )
+static int fwdfn12_a0_3( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = fwdfn13;
-  return 19;
+  return 25;
+}
+
+static int fwdfn12_a0_2( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn12_a0_3;
+  return 24;
+}
+
+static int fwdfn12_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn12_a0_2;
+  return 23;
 }
 
 static int fwdfn12( const state_t *state, void *next_func )
 {
-  if( state->vars[ 11 ] == 0 ) {
+  if( state->vars[ 7 ] == 0 ) {
     *((funcptr *)next_func) = fwdfn12_a0_1;
-    return 18;
+    return 22;
   } else {
     return fwdfn13( state, next_func );
   }
 }
 
-static int fwdfn11_a0_1( const state_t *state, void *next_func )
+static int fwdfn11_a0_3( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = fwdfn12;
-  return 17;
+  return 21;
+}
+
+static int fwdfn11_a0_2( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn11_a0_3;
+  return 20;
+}
+
+static int fwdfn11_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn11_a0_2;
+  return 19;
 }
 
 static int fwdfn11( const state_t *state, void *next_func )
 {
-  if( state->vars[ 10 ] == 0 ) {
+  if( state->vars[ 6 ] == 0 ) {
     *((funcptr *)next_func) = fwdfn11_a0_1;
-    return 16;
+    return 18;
   } else {
     return fwdfn12( state, next_func );
   }
 }
 
-static int fwdfn10_a0_1( const state_t *state, void *next_func )
+static int fwdfn10_a0_3( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = fwdfn11;
+  return 17;
+}
+
+static int fwdfn10_a0_2( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn10_a0_3;
+  return 16;
+}
+
+static int fwdfn10_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn10_a0_2;
   return 15;
 }
 
 static int fwdfn10( const state_t *state, void *next_func )
 {
-  if( state->vars[ 9 ] == 0 ) {
+  if( state->vars[ 5 ] == 0 ) {
     *((funcptr *)next_func) = fwdfn10_a0_1;
     return 14;
   } else {
@@ -692,137 +1244,209 @@ static int fwdfn10( const state_t *state, void *next_func )
   }
 }
 
-static int fwdfn9_a0_1( const state_t *state, void *next_func )
+static int fwdfn9_a0_2( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = fwdfn10;
-  return 13;
+  return 48;
+}
+
+static int fwdfn9_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn9_a0_2;
+  return 47;
 }
 
 static int fwdfn9( const state_t *state, void *next_func )
 {
-  if( state->vars[ 8 ] == 0 ) {
+  if( state->vars[ 14 ] == 0 ) {
     *((funcptr *)next_func) = fwdfn9_a0_1;
-    return 12;
+    return 46;
   } else {
     return fwdfn10( state, next_func );
   }
 }
 
-static int fwdfn8_a0_1( const state_t *state, void *next_func )
+static int fwdfn8_a0_2( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = fwdfn9;
-  return 11;
+  return 45;
+}
+
+static int fwdfn8_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn8_a0_2;
+  return 44;
 }
 
 static int fwdfn8( const state_t *state, void *next_func )
 {
-  if( state->vars[ 7 ] == 0 ) {
+  if( state->vars[ 13 ] == 0 ) {
     *((funcptr *)next_func) = fwdfn8_a0_1;
-    return 10;
+    return 43;
   } else {
     return fwdfn9( state, next_func );
   }
 }
 
-static int fwdfn7_a0_1( const state_t *state, void *next_func )
+static int fwdfn7_a0_2( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = fwdfn8;
-  return 9;
+  return 28;
+}
+
+static int fwdfn7_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn7_a0_2;
+  return 27;
 }
 
 static int fwdfn7( const state_t *state, void *next_func )
 {
-  if( state->vars[ 6 ] == 0 ) {
+  if( state->vars[ 8 ] == 0 ) {
     *((funcptr *)next_func) = fwdfn7_a0_1;
-    return 8;
+    return 26;
   } else {
     return fwdfn8( state, next_func );
   }
 }
 
-static int fwdfn6_a0_1( const state_t *state, void *next_func )
+static int fwdfn6_a0_2( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = fwdfn7;
-  return 7;
+  return 13;
+}
+
+static int fwdfn6_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn6_a0_2;
+  return 12;
 }
 
 static int fwdfn6( const state_t *state, void *next_func )
 {
-  if( state->vars[ 5 ] == 0 ) {
+  if( state->vars[ 4 ] == 0 ) {
     *((funcptr *)next_func) = fwdfn6_a0_1;
-    return 6;
+    return 11;
   } else {
     return fwdfn7( state, next_func );
   }
 }
 
-static int fwdfn5_a0_1( const state_t *state, void *next_func )
+static int fwdfn5_a0_2( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = fwdfn6;
-  return 5;
+  return 10;
+}
+
+static int fwdfn5_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn5_a0_2;
+  return 9;
 }
 
 static int fwdfn5( const state_t *state, void *next_func )
 {
-  if( state->vars[ 4 ] == 0 ) {
+  if( state->vars[ 3 ] == 0 ) {
     *((funcptr *)next_func) = fwdfn5_a0_1;
-    return 4;
+    return 8;
   } else {
     return fwdfn6( state, next_func );
   }
 }
 
+static int fwdfn4_a0_2( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn5;
+  return 7;
+}
+
+static int fwdfn4_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn4_a0_2;
+  return 6;
+}
+
 static int fwdfn4( const state_t *state, void *next_func )
 {
-  if( state->vars[ 15 ] == 0 ) {
-    *((funcptr *)next_func) = fwdfn5;
-    return 26;
+  if( state->vars[ 2 ] == 0 ) {
+    *((funcptr *)next_func) = fwdfn4_a0_1;
+    return 5;
   } else {
     return fwdfn5( state, next_func );
   }
 }
 
+static int fwdfn3_a0_2( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn4;
+  return 4;
+}
+
+static int fwdfn3_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn3_a0_2;
+  return 3;
+}
+
 static int fwdfn3( const state_t *state, void *next_func )
 {
-  if( state->vars[ 3 ] == 0 ) {
-    *((funcptr *)next_func) = fwdfn4;
-    return 3;
+  if( state->vars[ 1 ] == 0 ) {
+    *((funcptr *)next_func) = fwdfn3_a0_1;
+    return 2;
   } else {
     return fwdfn4( state, next_func );
   }
 }
 
+static int fwdfn2_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn3;
+  return 50;
+}
+
 static int fwdfn2( const state_t *state, void *next_func )
 {
-  if( state->vars[ 2 ] == 0 ) {
-    *((funcptr *)next_func) = fwdfn3;
-    return 2;
+  if( state->vars[ 15 ] == 0 ) {
+    *((funcptr *)next_func) = fwdfn2_a0_1;
+    return 49;
   } else {
     return fwdfn3( state, next_func );
   }
 }
 
+static int fwdfn1_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn2;
+  return 42;
+}
+
 static int fwdfn1( const state_t *state, void *next_func )
 {
-  if( state->vars[ 1 ] == 0 ) {
-    *((funcptr *)next_func) = fwdfn2;
-    return 1;
+  if( state->vars[ 12 ] == 0 ) {
+    *((funcptr *)next_func) = fwdfn1_a0_1;
+    return 41;
   } else {
     return fwdfn2( state, next_func );
   }
 }
 
+static int fwdfn0_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = fwdfn1;
+  return 1;
+}
+
 static int fwdfn0( const state_t *state, void *next_func )
 {
   if( state->vars[ 0 ] == 0 ) {
-    *((funcptr *)next_func) = fwdfn1;
+    *((funcptr *)next_func) = fwdfn0_a0_1;
     return 0;
   } else {
     return fwdfn1( state, next_func );
   }
 }
 
-static int bwd_prune_table[ 756 ] = { 27, 54, 81, 108, 135, 162, 189, 216, 243, 270, 297, 324, 351, 378, 405, 432, 459, 486, 513, 540, 567, 594, 621, 648, 675, 702, 729, 0, 54, 81, 108, 135, 162, 0, 216, 243, 270, 297, 324, 351, 378, 405, 432, 459, 486, 513, 540, 567, 594, 621, 648, 675, 702, 729, 27, 0, 81, 108, 135, 162, 189, 216, 0, 270, 297, 324, 351, 378, 405, 432, 459, 486, 513, 540, 567, 594, 621, 648, 675, 702, 729, 0, 54, 0, 108, 135, 162, 189, 216, 243, 270, 0, 324, 351, 378, 405, 432, 459, 486, 513, 540, 567, 594, 621, 648, 675, 702, 729, 0, 0, 81, 0, 135, 162, 189, 216, 243, 270, 297, 324, 0, 378, 405, 432, 459, 486, 513, 540, 567, 594, 621, 648, 675, 702, 729, 27, 0, 0, 108, 0, 0, 189, 216, 243, 270, 297, 324, 351, 378, 405, 432, 459, 486, 513, 540, 567, 594, 621, 648, 675, 702, 729, 0, 0, 0, 108, 0, 0, 189, 216, 243, 270, 297, 324, 351, 378, 0, 432, 459, 486, 513, 540, 567, 594, 621, 648, 675, 702, 729, 0, 54, 0, 0, 0, 162, 0, 0, 243, 270, 297, 324, 351, 378, 405, 432, 459, 486, 513, 540, 567, 594, 621, 648, 675, 702, 729, 0, 0, 0, 0, 0, 162, 0, 0, 243, 270, 297, 324, 351, 378, 405, 432, 0, 486, 513, 540, 567, 594, 621, 648, 675, 702, 729, 0, 0, 81, 0, 0, 0, 0, 216, 0, 0, 297, 324, 351, 378, 405, 432, 459, 486, 513, 540, 567, 594, 621, 648, 675, 702, 729, 0, 0, 0, 0, 0, 0, 0, 216, 0, 0, 297, 324, 351, 378, 405, 432, 459, 486, 0, 540, 567, 594, 621, 648, 675, 702, 729, 0, 0, 0, 108, 0, 0, 0, 0, 0, 270, 0, 0, 351, 378, 405, 432, 459, 486, 513, 540, 567, 594, 621, 648, 675, 702, 729, 0, 0, 0, 0, 0, 0, 0, 0, 0, 270, 0, 0, 351, 378, 405, 432, 459, 486, 513, 540, 0, 594, 621, 648, 675, 702, 729, 0, 0, 0, 0, 135, 162, 0, 0, 0, 0, 0, 324, 0, 0, 405, 432, 459, 486, 513, 540, 567, 594, 621, 648, 675, 702, 729, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 324, 0, 0, 405, 432, 459, 486, 513, 540, 567, 594, 0, 648, 675, 702, 729, 0, 0, 0, 0, 0, 0, 189, 216, 0, 0, 0, 0, 0, 378, 0, 0, 459, 486, 513, 540, 567, 594, 621, 648, 675, 702, 729, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 378, 0, 0, 459, 486, 513, 540, 567, 594, 621, 648, 0, 702, 729, 0, 0, 0, 0, 0, 0, 0, 0, 243, 270, 0, 0, 0, 0, 0, 432, 0, 0, 513, 540, 567, 594, 621, 648, 675, 702, 729, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 432, 0, 0, 513, 540, 567, 594, 621, 648, 675, 702, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 297, 324, 0, 0, 0, 0, 0, 486, 0, 0, 567, 594, 621, 648, 675, 702, 729, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 486, 0, 0, 567, 594, 621, 648, 675, 702, 729, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 351, 378, 0, 0, 0, 0, 0, 540, 0, 0, 621, 648, 675, 702, 729, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 540, 0, 0, 621, 648, 675, 702, 729, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 405, 432, 0, 0, 0, 0, 0, 594, 0, 0, 675, 702, 729, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 594, 0, 0, 675, 702, 729, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 459, 486, 0, 0, 0, 0, 0, 648, 0, 0, 729, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 648, 0, 0, 729, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 513, 540, 0, 0, 0, 0, 0, 702, 0 };
+static int bwd_prune_table[ 2652 ] = { 51, 102, 153, 204, 255, 306, 357, 408, 459, 510, 561, 612, 663, 714, 765, 816, 867, 918, 969, 1020, 1071, 1122, 1173, 1224, 1275, 1326, 1377, 1428, 1479, 1530, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 153, 204, 0, 306, 357, 0, 459, 510, 561, 612, 663, 714, 0, 816, 867, 918, 969, 1020, 1071, 1122, 1173, 1224, 1275, 1326, 1377, 1428, 1479, 1530, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 153, 204, 255, 306, 357, 408, 0, 510, 561, 0, 663, 714, 765, 816, 867, 0, 969, 1020, 1071, 1122, 1173, 1224, 1275, 1326, 0, 1428, 1479, 1530, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 51, 0, 0, 0, 0, 306, 357, 0, 459, 510, 0, 612, 663, 714, 765, 816, 867, 918, 0, 1020, 1071, 1122, 1173, 1224, 1275, 1326, 1377, 1428, 1479, 1530, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 51, 0, 0, 0, 0, 306, 357, 408, 459, 510, 561, 612, 0, 714, 0, 816, 867, 918, 969, 1020, 1071, 0, 1173, 1224, 1275, 1326, 1377, 1428, 1479, 0, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 102, 0, 0, 0, 306, 357, 408, 459, 510, 561, 0, 663, 714, 765, 816, 867, 918, 969, 1020, 1071, 1122, 1173, 1224, 1275, 1326, 1377, 1428, 1479, 1530, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 153, 0, 0, 0, 0, 0, 459, 510, 0, 612, 663, 714, 765, 816, 867, 918, 969, 1020, 1071, 1122, 0, 1224, 1275, 1326, 1377, 1428, 1479, 1530, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 153, 0, 0, 0, 0, 0, 459, 510, 561, 612, 663, 714, 765, 0, 867, 918, 0, 1020, 1071, 1122, 1173, 1224, 1275, 0, 1377, 1428, 1479, 1530, 1581, 1632, 1683, 0, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 204, 255, 0, 0, 0, 459, 510, 561, 612, 663, 714, 0, 816, 867, 918, 969, 1020, 1071, 1122, 1173, 1224, 1275, 1326, 1377, 1428, 1479, 1530, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 306, 0, 0, 0, 0, 0, 612, 663, 714, 765, 816, 867, 0, 969, 1020, 1071, 1122, 1173, 1224, 1275, 1326, 0, 1428, 1479, 1530, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 306, 0, 0, 0, 0, 0, 612, 663, 714, 765, 816, 867, 918, 969, 0, 1071, 1122, 0, 1224, 1275, 1326, 1377, 1428, 1479, 1530, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 0, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 357, 408, 0, 0, 0, 612, 663, 714, 765, 816, 867, 918, 0, 1020, 1071, 1122, 1173, 1224, 1275, 1326, 1377, 1428, 1479, 1530, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 51, 0, 0, 0, 0, 0, 0, 0, 459, 0, 0, 0, 0, 0, 765, 816, 867, 918, 969, 1020, 1071, 1122, 1173, 1224, 1275, 1326, 1377, 1428, 1479, 1530, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 102, 0, 0, 0, 0, 0, 0, 459, 0, 0, 0, 0, 0, 765, 816, 867, 0, 969, 1020, 1071, 0, 1173, 1224, 1275, 1326, 1377, 1428, 1479, 0, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 102, 0, 0, 0, 0, 0, 0, 459, 0, 0, 0, 0, 0, 765, 816, 867, 918, 969, 1020, 1071, 1122, 1173, 0, 1275, 1326, 0, 1428, 1479, 1530, 1581, 1632, 0, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 0, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 153, 0, 255, 0, 0, 0, 0, 0, 0, 0, 663, 0, 0, 0, 0, 0, 969, 1020, 1071, 1122, 1173, 1224, 1275, 1326, 1377, 1428, 1479, 1530, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 204, 0, 0, 0, 0, 0, 0, 0, 0, 663, 0, 0, 0, 0, 0, 969, 1020, 1071, 0, 1173, 1224, 1275, 0, 1377, 1428, 1479, 1530, 1581, 1632, 1683, 0, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 204, 0, 0, 0, 0, 0, 0, 0, 0, 663, 0, 0, 0, 0, 0, 969, 1020, 1071, 1122, 1173, 1224, 1275, 1326, 1377, 0, 1479, 0, 1581, 1632, 1683, 1734, 1785, 1836, 0, 1938, 1989, 2040, 2091, 2142, 2193, 0, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 204, 0, 0, 0, 0, 0, 0, 0, 612, 0, 714, 0, 0, 0, 0, 969, 1020, 1071, 1122, 1173, 1224, 1275, 1326, 0, 1428, 1479, 1530, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 306, 0, 408, 0, 0, 0, 0, 0, 0, 0, 816, 0, 0, 0, 0, 0, 0, 1173, 1224, 1275, 1326, 1377, 1428, 1479, 1530, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 357, 0, 0, 0, 0, 0, 0, 0, 0, 816, 0, 0, 0, 0, 0, 0, 1173, 1224, 1275, 0, 1377, 1428, 1479, 1530, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 0, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 357, 0, 0, 0, 0, 0, 0, 0, 0, 816, 0, 0, 0, 0, 0, 0, 1173, 1224, 1275, 1326, 1377, 1428, 1479, 1530, 0, 1632, 1683, 0, 1785, 1836, 1887, 1938, 1989, 2040, 0, 2142, 2193, 2244, 2295, 2346, 0, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 357, 0, 0, 0, 0, 0, 0, 0, 765, 0, 867, 918, 0, 0, 0, 0, 1173, 1224, 1275, 1326, 1377, 1428, 1479, 0, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 459, 0, 561, 0, 0, 0, 0, 0, 0, 0, 0, 1020, 0, 0, 0, 0, 0, 0, 1377, 1428, 1479, 1530, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 510, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1020, 0, 0, 0, 0, 0, 0, 1377, 1428, 1479, 1530, 1581, 1632, 0, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 0, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 510, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1020, 0, 0, 0, 0, 0, 0, 1377, 1428, 1479, 1530, 1581, 1632, 1683, 1734, 0, 1836, 1887, 0, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 0, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 510, 0, 0, 0, 0, 0, 0, 0, 0, 969, 0, 1071, 1122, 0, 0, 0, 0, 1377, 1428, 1479, 1530, 1581, 1632, 1683, 0, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 612, 663, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1224, 0, 0, 0, 0, 0, 1530, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 714, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1224, 0, 0, 0, 0, 0, 1530, 1581, 1632, 0, 1734, 1785, 1836, 0, 1938, 1989, 2040, 2091, 2142, 2193, 0, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 714, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1224, 0, 0, 0, 0, 0, 1530, 1581, 1632, 1683, 1734, 1785, 1836, 1887, 1938, 0, 2040, 2091, 0, 2193, 2244, 2295, 0, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 765, 816, 0, 918, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1428, 0, 0, 0, 0, 0, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 867, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1428, 0, 0, 0, 0, 0, 1734, 1785, 1836, 0, 1938, 1989, 2040, 0, 2142, 2193, 2244, 2295, 2346, 0, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 867, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1428, 0, 0, 0, 0, 0, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 2142, 0, 0, 2295, 2346, 2397, 2448, 0, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 867, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1377, 0, 1479, 0, 0, 0, 0, 1734, 1785, 1836, 1887, 1938, 1989, 2040, 2091, 0, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 969, 1020, 0, 1122, 0, 0, 0, 0, 0, 0, 0, 0, 1581, 0, 0, 0, 0, 0, 0, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1071, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1581, 0, 0, 0, 0, 0, 0, 1938, 1989, 2040, 0, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 0, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1071, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1581, 0, 0, 0, 0, 0, 0, 1938, 1989, 2040, 2091, 2142, 2193, 2244, 0, 2346, 0, 2448, 2499, 2550, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1071, 0, 0, 0, 0, 0, 0, 0, 0, 1530, 0, 1632, 1683, 0, 0, 0, 0, 1938, 1989, 2040, 2091, 2142, 2193, 0, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1173, 1224, 0, 1326, 0, 0, 0, 0, 0, 0, 0, 0, 1785, 0, 0, 0, 0, 0, 0, 2142, 2193, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1275, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1785, 0, 0, 0, 0, 0, 0, 2142, 2193, 2244, 2295, 0, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1275, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1785, 0, 0, 0, 0, 0, 0, 2142, 2193, 2244, 2295, 2346, 2397, 0, 2499, 0, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1275, 0, 0, 0, 0, 0, 0, 0, 0, 1734, 0, 1836, 1887, 0, 0, 0, 0, 2142, 2193, 2244, 2295, 2346, 0, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1377, 1428, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1989, 0, 0, 0, 0, 2244, 2295, 2346, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1479, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1989, 0, 0, 0, 0, 2244, 2295, 0, 2397, 2448, 0, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1530, 1581, 0, 1683, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2193, 0, 0, 0, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1632, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2193, 0, 0, 0, 2397, 2448, 0, 2550, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1632, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2142, 0, 0, 0, 0, 2397, 2448, 2499, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1734, 1785, 0, 1887, 0, 0, 0, 0, 0, 0, 0, 2295, 0, 0, 0, 0, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1836, 0, 0, 0, 0, 0, 0, 0, 0, 2295, 0, 0, 0, 0, 2550, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1836, 0, 0, 0, 0, 0, 0, 0, 2244, 0, 2346, 0, 0, 0, 2550, 2601, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1938, 1989, 0, 2091, 0, 0, 0, 0, 0, 0, 2448, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2040, 0, 0, 0, 0, 0, 0, 2397, 0, 2499, 0, 0 };
 
 static void bwdrule1( const state_t *state, state_t *child_state )
 {
@@ -846,6 +1470,26 @@ static void bwdrule1( const state_t *state, state_t *child_state )
 
 static void bwdrule2( const state_t *state, state_t *child_state )
 {
+  child_state->vars[ 0 ] = 0;
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 0 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule3( const state_t *state, state_t *child_state )
+{
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = 0;
   child_state->vars[ 2 ] = state->vars[ 1 ];
@@ -864,7 +1508,47 @@ static void bwdrule2( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule3( const state_t *state, state_t *child_state )
+static void bwdrule4( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = 0;
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 1 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule5( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 1 ];
+  child_state->vars[ 1 ] = 0;
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule6( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -884,7 +1568,47 @@ static void bwdrule3( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule4( const state_t *state, state_t *child_state )
+static void bwdrule7( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = 0;
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 2 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule8( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 2 ];
+  child_state->vars[ 2 ] = 0;
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule9( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -904,7 +1628,47 @@ static void bwdrule4( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule5( const state_t *state, state_t *child_state )
+static void bwdrule10( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = 0;
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 3 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule11( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 3 ];
+  child_state->vars[ 3 ] = 0;
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule12( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 4 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -924,7 +1688,7 @@ static void bwdrule5( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule6( const state_t *state, state_t *child_state )
+static void bwdrule13( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -944,7 +1708,27 @@ static void bwdrule6( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule7( const state_t *state, state_t *child_state )
+static void bwdrule14( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = 0;
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 4 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule15( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 5 ];
@@ -964,7 +1748,7 @@ static void bwdrule7( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule8( const state_t *state, state_t *child_state )
+static void bwdrule16( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -984,7 +1768,47 @@ static void bwdrule8( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule9( const state_t *state, state_t *child_state )
+static void bwdrule17( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = 0;
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 5 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule18( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 5 ];
+  child_state->vars[ 5 ] = 0;
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule19( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1004,7 +1828,7 @@ static void bwdrule9( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule10( const state_t *state, state_t *child_state )
+static void bwdrule20( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1024,7 +1848,47 @@ static void bwdrule10( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule11( const state_t *state, state_t *child_state )
+static void bwdrule21( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = 0;
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 6 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule22( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 6 ];
+  child_state->vars[ 6 ] = 0;
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule23( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1044,7 +1908,7 @@ static void bwdrule11( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule12( const state_t *state, state_t *child_state )
+static void bwdrule24( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1064,7 +1928,47 @@ static void bwdrule12( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule13( const state_t *state, state_t *child_state )
+static void bwdrule25( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = 0;
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 7 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule26( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 7 ];
+  child_state->vars[ 7 ] = 0;
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule27( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1084,7 +1988,7 @@ static void bwdrule13( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule14( const state_t *state, state_t *child_state )
+static void bwdrule28( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1104,7 +2008,27 @@ static void bwdrule14( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule15( const state_t *state, state_t *child_state )
+static void bwdrule29( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = 0;
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 8 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule30( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1124,7 +2048,7 @@ static void bwdrule15( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule16( const state_t *state, state_t *child_state )
+static void bwdrule31( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1144,7 +2068,47 @@ static void bwdrule16( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule17( const state_t *state, state_t *child_state )
+static void bwdrule32( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = 0;
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 9 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule33( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 9 ];
+  child_state->vars[ 9 ] = 0;
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule34( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1164,7 +2128,7 @@ static void bwdrule17( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule18( const state_t *state, state_t *child_state )
+static void bwdrule35( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1184,7 +2148,47 @@ static void bwdrule18( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule19( const state_t *state, state_t *child_state )
+static void bwdrule36( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = 0;
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 10 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule37( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 10 ];
+  child_state->vars[ 10 ] = 0;
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule38( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1204,7 +2208,7 @@ static void bwdrule19( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule20( const state_t *state, state_t *child_state )
+static void bwdrule39( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1224,7 +2228,47 @@ static void bwdrule20( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule21( const state_t *state, state_t *child_state )
+static void bwdrule40( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = 0;
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 11 ];
+}
+
+static void bwdrule41( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 11 ];
+  child_state->vars[ 11 ] = 0;
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule42( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1244,7 +2288,7 @@ static void bwdrule21( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule22( const state_t *state, state_t *child_state )
+static void bwdrule43( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1264,7 +2308,7 @@ static void bwdrule22( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule23( const state_t *state, state_t *child_state )
+static void bwdrule44( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1284,7 +2328,7 @@ static void bwdrule23( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule24( const state_t *state, state_t *child_state )
+static void bwdrule45( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1304,7 +2348,27 @@ static void bwdrule24( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule25( const state_t *state, state_t *child_state )
+static void bwdrule46( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 13 ];
+  child_state->vars[ 13 ] = 0;
+  child_state->vars[ 14 ] = state->vars[ 14 ];
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule47( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1324,7 +2388,7 @@ static void bwdrule25( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 15 ];
 }
 
-static void bwdrule26( const state_t *state, state_t *child_state )
+static void bwdrule48( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1344,7 +2408,27 @@ static void bwdrule26( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = state->vars[ 14 ];
 }
 
-static void bwdrule27( const state_t *state, state_t *child_state )
+static void bwdrule49( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 14 ];
+  child_state->vars[ 14 ] = 0;
+  child_state->vars[ 15 ] = state->vars[ 15 ];
+}
+
+static void bwdrule50( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 0 ];
   child_state->vars[ 1 ] = state->vars[ 1 ];
@@ -1364,49 +2448,105 @@ static void bwdrule27( const state_t *state, state_t *child_state )
   child_state->vars[ 15 ] = 0;
 }
 
-static actfuncptr bwd_rules[ 27 ] = { bwdrule1, bwdrule2, bwdrule3, bwdrule4, bwdrule5, bwdrule6, bwdrule7, bwdrule8, bwdrule9, bwdrule10, bwdrule11, bwdrule12, bwdrule13, bwdrule14, bwdrule15, bwdrule16, bwdrule17, bwdrule18, bwdrule19, bwdrule20, bwdrule21, bwdrule22, bwdrule23, bwdrule24, bwdrule25, bwdrule26, bwdrule27 };
+static void bwdrule51( const state_t *state, state_t *child_state )
+{
+  child_state->vars[ 0 ] = state->vars[ 0 ];
+  child_state->vars[ 1 ] = state->vars[ 1 ];
+  child_state->vars[ 2 ] = state->vars[ 2 ];
+  child_state->vars[ 3 ] = state->vars[ 3 ];
+  child_state->vars[ 4 ] = state->vars[ 4 ];
+  child_state->vars[ 5 ] = state->vars[ 5 ];
+  child_state->vars[ 6 ] = state->vars[ 6 ];
+  child_state->vars[ 7 ] = state->vars[ 7 ];
+  child_state->vars[ 8 ] = state->vars[ 8 ];
+  child_state->vars[ 9 ] = state->vars[ 9 ];
+  child_state->vars[ 10 ] = state->vars[ 10 ];
+  child_state->vars[ 11 ] = state->vars[ 11 ];
+  child_state->vars[ 12 ] = state->vars[ 12 ];
+  child_state->vars[ 13 ] = state->vars[ 13 ];
+  child_state->vars[ 14 ] = state->vars[ 15 ];
+  child_state->vars[ 15 ] = 0;
+}
+
+static actfuncptr bwd_rules[ 51 ] = { bwdrule1, bwdrule2, bwdrule3, bwdrule4, bwdrule5, bwdrule6, bwdrule7, bwdrule8, bwdrule9, bwdrule10, bwdrule11, bwdrule12, bwdrule13, bwdrule14, bwdrule15, bwdrule16, bwdrule17, bwdrule18, bwdrule19, bwdrule20, bwdrule21, bwdrule22, bwdrule23, bwdrule24, bwdrule25, bwdrule26, bwdrule27, bwdrule28, bwdrule29, bwdrule30, bwdrule31, bwdrule32, bwdrule33, bwdrule34, bwdrule35, bwdrule36, bwdrule37, bwdrule38, bwdrule39, bwdrule40, bwdrule41, bwdrule42, bwdrule43, bwdrule44, bwdrule45, bwdrule46, bwdrule47, bwdrule48, bwdrule49, bwdrule50, bwdrule51 };
+
+static int bwdfn15_a0_3( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = NULL;
+  return 46;
+}
+
+static int bwdfn15_a0_2( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn15_a0_3;
+  return 40;
+}
 
 static int bwdfn15_a0_1( const state_t *state, void *next_func )
 {
-  *((funcptr *)next_func) = NULL;
-  return 26;
+  *((funcptr *)next_func) = bwdfn15_a0_2;
+  return 30;
 }
 
 static int bwdfn15( const state_t *state, void *next_func )
 {
-  if( state->vars[ 11 ] == 0 ) {
+  if( state->vars[ 10 ] == 0 ) {
     *((funcptr *)next_func) = bwdfn15_a0_1;
-    return 17;
+    return 20;
   } else {
     return -1;
   }
 }
 
-static int bwdfn14_a0_1( const state_t *state, void *next_func )
+static int bwdfn14_a0_3( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = bwdfn15;
-  return 24;
+  return 43;
+}
+
+static int bwdfn14_a0_2( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn14_a0_3;
+  return 36;
+}
+
+static int bwdfn14_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn14_a0_2;
+  return 27;
 }
 
 static int bwdfn14( const state_t *state, void *next_func )
 {
-  if( state->vars[ 10 ] == 0 ) {
+  if( state->vars[ 9 ] == 0 ) {
     *((funcptr *)next_func) = bwdfn14_a0_1;
-    return 15;
+    return 16;
   } else {
     return bwdfn15( state, next_func );
   }
 }
 
-static int bwdfn13_a0_1( const state_t *state, void *next_func )
+static int bwdfn13_a0_3( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = bwdfn14;
-  return 22;
+  return 41;
+}
+
+static int bwdfn13_a0_2( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn13_a0_3;
+  return 32;
+}
+
+static int bwdfn13_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn13_a0_2;
+  return 23;
 }
 
 static int bwdfn13( const state_t *state, void *next_func )
 {
-  if( state->vars[ 9 ] == 0 ) {
+  if( state->vars[ 8 ] == 0 ) {
     *((funcptr *)next_func) = bwdfn13_a0_1;
     return 13;
   } else {
@@ -1414,178 +2554,286 @@ static int bwdfn13( const state_t *state, void *next_func )
   }
 }
 
-static int bwdfn12_a0_1( const state_t *state, void *next_func )
+static int bwdfn12_a0_3( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = bwdfn13;
-  return 20;
+  return 33;
+}
+
+static int bwdfn12_a0_2( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn12_a0_3;
+  return 25;
+}
+
+static int bwdfn12_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn12_a0_2;
+  return 15;
 }
 
 static int bwdfn12( const state_t *state, void *next_func )
 {
-  if( state->vars[ 8 ] == 0 ) {
+  if( state->vars[ 6 ] == 0 ) {
     *((funcptr *)next_func) = bwdfn12_a0_1;
-    return 11;
+    return 6;
   } else {
     return bwdfn13( state, next_func );
   }
 }
 
-static int bwdfn11_a0_1( const state_t *state, void *next_func )
+static int bwdfn11_a0_3( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = bwdfn12;
-  return 18;
+  return 29;
+}
+
+static int bwdfn11_a0_2( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn11_a0_3;
+  return 21;
+}
+
+static int bwdfn11_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn11_a0_2;
+  return 12;
 }
 
 static int bwdfn11( const state_t *state, void *next_func )
 {
-  if( state->vars[ 7 ] == 0 ) {
+  if( state->vars[ 5 ] == 0 ) {
     *((funcptr *)next_func) = bwdfn11_a0_1;
-    return 9;
+    return 3;
   } else {
     return bwdfn12( state, next_func );
   }
 }
 
-static int bwdfn10_a0_1( const state_t *state, void *next_func )
+static int bwdfn10_a0_3( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = bwdfn11;
-  return 16;
+  return 26;
+}
+
+static int bwdfn10_a0_2( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn10_a0_3;
+  return 17;
+}
+
+static int bwdfn10_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn10_a0_2;
+  return 8;
 }
 
 static int bwdfn10( const state_t *state, void *next_func )
 {
-  if( state->vars[ 6 ] == 0 ) {
+  if( state->vars[ 4 ] == 0 ) {
     *((funcptr *)next_func) = bwdfn10_a0_1;
-    return 7;
+    return 1;
   } else {
     return bwdfn11( state, next_func );
   }
 }
 
-static int bwdfn9_a0_1( const state_t *state, void *next_func )
+static int bwdfn9_a0_2( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = bwdfn10;
-  return 14;
+  return 50;
+}
+
+static int bwdfn9_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn9_a0_2;
+  return 44;
 }
 
 static int bwdfn9( const state_t *state, void *next_func )
 {
-  if( state->vars[ 5 ] == 0 ) {
+  if( state->vars[ 14 ] == 0 ) {
     *((funcptr *)next_func) = bwdfn9_a0_1;
-    return 5;
+    return 35;
   } else {
     return bwdfn10( state, next_func );
   }
 }
 
-static int bwdfn8_a0_1( const state_t *state, void *next_func )
+static int bwdfn8_a0_2( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = bwdfn9;
-  return 12;
+  return 48;
+}
+
+static int bwdfn8_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn8_a0_2;
+  return 42;
 }
 
 static int bwdfn8( const state_t *state, void *next_func )
 {
-  if( state->vars[ 4 ] == 0 ) {
+  if( state->vars[ 13 ] == 0 ) {
     *((funcptr *)next_func) = bwdfn8_a0_1;
-    return 3;
+    return 31;
   } else {
     return bwdfn9( state, next_func );
   }
 }
 
-static int bwdfn7_a0_1( const state_t *state, void *next_func )
+static int bwdfn7_a0_2( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = bwdfn8;
-  return 10;
+  return 45;
+}
+
+static int bwdfn7_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn7_a0_2;
+  return 38;
 }
 
 static int bwdfn7( const state_t *state, void *next_func )
 {
-  if( state->vars[ 3 ] == 0 ) {
+  if( state->vars[ 12 ] == 0 ) {
     *((funcptr *)next_func) = bwdfn7_a0_1;
-    return 2;
+    return 28;
   } else {
     return bwdfn8( state, next_func );
   }
 }
 
-static int bwdfn6_a0_1( const state_t *state, void *next_func )
+static int bwdfn6_a0_2( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = bwdfn7;
-  return 8;
+  return 49;
+}
+
+static int bwdfn6_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn6_a0_2;
+  return 34;
 }
 
 static int bwdfn6( const state_t *state, void *next_func )
 {
-  if( state->vars[ 2 ] == 0 ) {
+  if( state->vars[ 11 ] == 0 ) {
     *((funcptr *)next_func) = bwdfn6_a0_1;
-    return 1;
+    return 24;
   } else {
     return bwdfn7( state, next_func );
   }
 }
 
-static int bwdfn5_a0_1( const state_t *state, void *next_func )
+static int bwdfn5_a0_2( const state_t *state, void *next_func )
 {
   *((funcptr *)next_func) = bwdfn6;
-  return 6;
+  return 37;
+}
+
+static int bwdfn5_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn5_a0_2;
+  return 19;
 }
 
 static int bwdfn5( const state_t *state, void *next_func )
 {
-  if( state->vars[ 1 ] == 0 ) {
+  if( state->vars[ 7 ] == 0 ) {
     *((funcptr *)next_func) = bwdfn5_a0_1;
-    return 0;
+    return 9;
   } else {
     return bwdfn6( state, next_func );
   }
 }
 
+static int bwdfn4_a0_2( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn5;
+  return 18;
+}
+
+static int bwdfn4_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn4_a0_2;
+  return 10;
+}
+
 static int bwdfn4( const state_t *state, void *next_func )
 {
-  if( state->vars[ 15 ] == 0 ) {
-    *((funcptr *)next_func) = bwdfn5;
-    return 25;
+  if( state->vars[ 2 ] == 0 ) {
+    *((funcptr *)next_func) = bwdfn4_a0_1;
+    return 2;
   } else {
     return bwdfn5( state, next_func );
   }
 }
 
+static int bwdfn3_a0_2( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn4;
+  return 14;
+}
+
+static int bwdfn3_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn3_a0_2;
+  return 7;
+}
+
 static int bwdfn3( const state_t *state, void *next_func )
 {
-  if( state->vars[ 14 ] == 0 ) {
-    *((funcptr *)next_func) = bwdfn4;
-    return 23;
+  if( state->vars[ 1 ] == 0 ) {
+    *((funcptr *)next_func) = bwdfn3_a0_1;
+    return 0;
   } else {
     return bwdfn4( state, next_func );
   }
 }
 
+static int bwdfn2_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn3;
+  return 47;
+}
+
 static int bwdfn2( const state_t *state, void *next_func )
 {
-  if( state->vars[ 13 ] == 0 ) {
-    *((funcptr *)next_func) = bwdfn3;
-    return 21;
+  if( state->vars[ 15 ] == 0 ) {
+    *((funcptr *)next_func) = bwdfn2_a0_1;
+    return 39;
   } else {
     return bwdfn3( state, next_func );
   }
 }
 
+static int bwdfn1_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn2;
+  return 22;
+}
+
 static int bwdfn1( const state_t *state, void *next_func )
 {
-  if( state->vars[ 12 ] == 0 ) {
-    *((funcptr *)next_func) = bwdfn2;
-    return 19;
+  if( state->vars[ 3 ] == 0 ) {
+    *((funcptr *)next_func) = bwdfn1_a0_1;
+    return 5;
   } else {
     return bwdfn2( state, next_func );
   }
 }
 
+static int bwdfn0_a0_1( const state_t *state, void *next_func )
+{
+  *((funcptr *)next_func) = bwdfn1;
+  return 11;
+}
+
 static int bwdfn0( const state_t *state, void *next_func )
 {
   if( state->vars[ 0 ] == 0 ) {
-    *((funcptr *)next_func) = bwdfn1;
+    *((funcptr *)next_func) = bwdfn0_a0_1;
     return 4;
   } else {
     return bwdfn1( state, next_func );
@@ -1595,7 +2843,7 @@ static int bwdfn0( const state_t *state, void *next_func )
 
 #define init_history 0
 
-#define max_fwd_children 27
+#define max_fwd_children 51
 
 /* NOTE: FOR ALL OF THE MOVE ITERATOR DEFINITIONS funcptr
    MUST BE A VARIABLE. */
@@ -1618,8 +2866,8 @@ static int bwdfn0( const state_t *state, void *next_func )
 #define next_fwd_history( history, rule_used ) 0 
 
 
-static const int bw_max_children = 27;
-#define max_bwd_children 27
+static const int bw_max_children = 51;
+#define max_bwd_children 51
 
 /* initialise a backwards move iterator */
 #define init_bwd_iter( ruleid_iter, state ) { \

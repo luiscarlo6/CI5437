@@ -101,14 +101,14 @@ int main(int argc, char *argv[])
     for (int i=1; i<argc; ++i) {
 	cout << "  " << argv[i] ;
     }
-    cout << "\n\nDOMAIN B 1 2 /* The blank space\n";
+    cout << "\n\nDOMAIN tile 15N    # for theothertiles.\n      B 1 2 #The blank space\n";
     cout << "\n\n# number of state variables\n";
-    cout << max << "\n";
+    cout << " " << max << "\n";
 
 
     cout << "\n# 1 state variable is the blank 'B' the others goes from 1 to 15.\n";
     for (int i=0;i<max;i++)
-        cout << "15N ";
+        cout << "tile ";
     cout << "\n\n";
 
     for (int i=0; i<N;i++) {  // create the rules for flipping bits i and i+1
@@ -125,7 +125,7 @@ int main(int argc, char *argv[])
                             break;
                         if(l == currentpos - 4){
                             tstr = tstr + "X ";
-                            tstr2 = tstr2 + "B ";
+                            tstr2 = tstr2 + "b ";
                             label = " LABEL move" + convertInt(i) + convertInt(j) + "_up";
                             print = 1;
                             continue;
@@ -135,7 +135,7 @@ int main(int argc, char *argv[])
                             break;
                         if(l == currentpos + 1){
                             tstr = tstr + "X ";
-                            tstr2 = tstr2 + "B ";
+                            tstr2 = tstr2 + "b ";
                             label = " LABEL move" + convertInt(i) + convertInt(j) + "_right";
                             print = 1;
                             continue;
@@ -145,7 +145,7 @@ int main(int argc, char *argv[])
                             break;
                         if(l == currentpos + N){
                             tstr = tstr + "X ";
-                            tstr2 = tstr2 + "B ";
+                            tstr2 = tstr2 + "b ";
                             label = " LABEL move" + convertInt(i) + convertInt(j) + "_down";
                             print = 1;
                             continue;
@@ -155,14 +155,14 @@ int main(int argc, char *argv[])
                             break;
                         if(l == currentpos - 1){
                             tstr = tstr + "X ";
-                            tstr2 = tstr2 + "B ";
+                            tstr2 = tstr2 + "b ";
                             label = " LABEL move" + convertInt(i) + convertInt(j) + "_left";
                             print = 1;
                             continue;
                         }
                     }
                     if(l == currentpos){ // if the position of the str match the B position
-                        tstr = tstr + "0 ";
+                        tstr = tstr + "b ";
                         tstr2 = tstr2 + "X ";
                     }else{
                         tstr = tstr + "- ";
@@ -178,7 +178,7 @@ int main(int argc, char *argv[])
             }
         }
     }
-    cout << "\nGOAL B ";
+    cout << "\nGOAL b ";
     for (int i=1;i<max;i++)  { cout << i << " "; } // in the goal, all arrows point down
     cout << endl ;
     exit(0);
