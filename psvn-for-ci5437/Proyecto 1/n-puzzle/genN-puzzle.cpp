@@ -18,7 +18,7 @@
 #include <assert.h>
 
 using namespace std;
-#define NUM_OP 2 //Number of max operations posible in any position.
+#define NUM_OP 4 //Number of max operations posible in any position.
 
 string convertInt(int number)
 {
@@ -125,6 +125,7 @@ int main(int argc, char *argv[])
                         if(l == currentpos - 4){
                             tstr = tstr + "X ";
                             tstr2 = tstr2 + "0 ";
+                            label = "LABEL move" + convertInt(i) + convertInt(j) + "_up";
                             print = 1;
                             continue;
                         }
@@ -134,17 +135,17 @@ int main(int argc, char *argv[])
                         if(l == currentpos + 1){
                             tstr = tstr + "X ";
                             tstr2 = tstr2 + "0 ";
+                            label = "LABEL move" + convertInt(i) + convertInt(j) + "_right";
                             print = 1;
                             continue;
                         }
-                    }/* This comment is cause we dont want duplicate moves in the psvn like 
-                      *  0X = X0 and X0 = 0X
-                        else if(k == 2){ // We use 2 to indicate the blank moves down
+                    }else if(k == 2){ // We use 2 to indicate the blank moves down
                         if(i == N)
                             break;
                         if(l == currentpos + N){
                             tstr = tstr + "X ";
                             tstr2 = tstr2 + "0 ";
+                            label = "LABEL move" + convertInt(i) + convertInt(j) + "_down";
                             print = 1;
                             continue;
                         }
@@ -154,10 +155,11 @@ int main(int argc, char *argv[])
                         if(l == currentpos - 1){
                             tstr = tstr + "X ";
                             tstr2 = tstr2 + "0 ";
+                            label = "LABEL move" + convertInt(i) + convertInt(j) + "_left";
                             print = 1;
                             continue;
                         }
-                    }*/
+                    }
                     if(l == currentpos){ // if the position of the str match the B position
                         tstr = tstr + "0 ";
                         tstr2 = tstr2 + "X ";
@@ -167,7 +169,7 @@ int main(int argc, char *argv[])
                     }
                 }
                 if(print==1){
-                    cout << tstr << "=> " << tstr2;
+                    cout << tstr << "=> " << tstr2 << label;
                     //cout << "  LABEL Flip_"+convertInt(i+1) << "_" << convertInt(i+2);  // the arrows are numbered from 1, not 0
                     //if (printcost) { cout << " COST " << convertInt(cost); }
                     cout << endl ;
