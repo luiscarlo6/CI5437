@@ -12,6 +12,7 @@
 #define psvn2c_PSVN_API
 
 #define HAVE_BWD_MOVES
+#define HAVE_BWD_MOVE_PRUNING
 
 
 /* number of variables in a state */
@@ -667,6 +668,8 @@ static int fwdfn0_r0( const state_t *state, void *next_func )
   return 0;
 }
 
+static int bwd_prune_table[ 342 ] = { 18, 36, 54, 72, 90, 108, 126, 144, 162, 180, 198, 216, 234, 252, 270, 288, 306, 324, 0, 0, 0, 72, 90, 108, 126, 144, 162, 180, 198, 216, 234, 252, 270, 288, 306, 324, 0, 0, 0, 72, 90, 108, 126, 144, 162, 180, 198, 216, 234, 252, 270, 288, 306, 324, 0, 0, 0, 72, 90, 108, 126, 144, 162, 180, 198, 216, 234, 252, 270, 288, 306, 324, 18, 36, 54, 0, 0, 0, 126, 144, 162, 180, 198, 216, 234, 252, 270, 288, 306, 324, 18, 36, 54, 0, 0, 0, 126, 144, 162, 180, 198, 216, 234, 252, 270, 288, 306, 324, 18, 36, 54, 0, 0, 0, 126, 144, 162, 180, 198, 216, 234, 252, 270, 288, 306, 324, 0, 0, 0, 72, 90, 108, 0, 0, 0, 180, 198, 216, 234, 252, 270, 288, 306, 324, 0, 0, 0, 72, 90, 108, 0, 0, 0, 180, 198, 216, 234, 252, 270, 288, 306, 324, 0, 0, 0, 72, 90, 108, 0, 0, 0, 180, 198, 216, 234, 252, 270, 288, 306, 324, 18, 36, 54, 0, 0, 0, 126, 144, 162, 0, 0, 0, 234, 252, 270, 288, 306, 324, 18, 36, 54, 0, 0, 0, 126, 144, 162, 0, 0, 0, 234, 252, 270, 288, 306, 324, 18, 36, 54, 0, 0, 0, 126, 144, 162, 0, 0, 0, 234, 252, 270, 288, 306, 324, 18, 36, 54, 72, 90, 108, 126, 144, 162, 180, 198, 216, 0, 0, 0, 288, 306, 324, 18, 36, 54, 72, 90, 108, 126, 144, 162, 180, 198, 216, 0, 0, 0, 288, 306, 324, 18, 36, 54, 72, 90, 108, 126, 144, 162, 180, 198, 216, 0, 0, 0, 288, 306, 324, 18, 36, 54, 72, 90, 108, 126, 144, 162, 180, 198, 216, 0, 0, 0, 0, 0, 0, 18, 36, 54, 72, 90, 108, 126, 144, 162, 180, 198, 216, 0, 0, 0, 0, 0, 0, 18, 36, 54, 72, 90, 108, 126, 144, 162, 180, 198, 216, 0, 0, 0, 0, 0, 0 };
+
 static void bwdrule1( const state_t *state, state_t *child_state )
 {
   child_state->vars[ 0 ] = state->vars[ 1 ];
@@ -1319,9 +1322,9 @@ static const int bw_max_children = 18;
 /* apply a rule to a state */
 #define apply_bwd_rule( rule, state, result ) bwd_rules[(rule)](state,result)
 /* returns 0 if the rule is pruned, non-zero otherwise */
-#define bwd_rule_valid_for_history( history, rule_used ) 1 
+#define bwd_rule_valid_for_history( history, rule_used ) (bwd_prune_table[(history)+(rule_used)])
 /* generate the next history from the current history and a rule */
-#define next_bwd_history( history, rule_used ) 0 
+#define next_bwd_history( history, rule_used ) (bwd_prune_table[(history)+(rule_used)])
 
 
 /* returns 1 if state is a goal state, 0 otherwise */

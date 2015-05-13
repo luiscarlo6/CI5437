@@ -1,7 +1,7 @@
 CC = gcc
 CXX = g++
 OPT = -g -Wall -O3 -Wno-unused-function -Wno-unused-variable
-PSVNOPT = --state_map --no_abstraction --backwards_moves --history_len=0
+PSVNOPT = --state_map --no_abstraction --backwards_moves --fwd_history_len=0
 
 psvn2c_core.c:
 	cp ../../psvn2c_core.c ./psvn2c_core.c
@@ -23,6 +23,9 @@ searchTree.cpp:
 
 bfsDDD.cpp:
 	cp ../codes/bfsDDD.cpp ./bfsDDD.cpp
+
+ucsDDD.cpp:
+	cp ../codes/ucsDDD.cpp ./ucsDDD.cpp
 
 %.c: %.psvn  psvn2c_core.c psvn2c_state_map.c psvn2c_abstraction.c
 	../../psvn2c  $(PSVNOPT) --name=$(*F)  < $< > $@
@@ -49,6 +52,10 @@ priority_queue.hpp:
 	$(CXX) $(OPT) bfsDDD.cpp -include $< -o $@
 	rm -f ./priority_queue.hpp
 
+%.ucsDDD: %.c ucsDDD.cpp priority_queue.hpp
+	$(CXX) $(OPT) ucsDDD.cpp -include $< -o $@
+	rm -f ./priority_queue.hpp
+
 .PHONY: clean
 clean:
-	rm -f dist.cpp bfsDDD.cpp distSummary.cpp searchTree.cpp *.dist *.distSummary *.searchTree *.bfsDDD *.o  priority_queue.hpp psvn2c_core.c psvn2c_state_map.c psvn2c_abstraction.c *~
+	rm -f dist.cpp bfsDDD.cpp ucsDDD.cpp distSummary.cpp searchTree.cpp *.dist *.distSummary *.searchTree *.bfsDDD *.ucsDDD *.o  priority_queue.hpp psvn2c_core.c psvn2c_state_map.c psvn2c_abstraction.c *~
