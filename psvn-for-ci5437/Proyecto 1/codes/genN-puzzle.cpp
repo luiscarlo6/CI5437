@@ -97,7 +97,7 @@ int main(int argc, char *argv[])
 /******* CREATE THE PSVN FILE ************/
 
 
-    cout << "# This file was created by genRubiknxn.cpp with the following command line parameters:\n#";
+    cout << "# This file was created by genN-puzzle.cpp with the following command line parameters:\n#";
     for (int i=1; i<argc; ++i) {
 	cout << "  " << argv[i] ;
     }
