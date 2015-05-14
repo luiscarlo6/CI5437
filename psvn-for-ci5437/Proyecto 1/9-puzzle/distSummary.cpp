@@ -2,7 +2,7 @@
 This program computes the distance to goal (i.e. the cost of the least-cost path to the goal)
 of every state from which the goal can be reached.
 It does this by executing Dijkstra's algorithm backwards from the goal.
-It prints on stdout each state and its distance (distance first, then the state) and, if a filename is
+It prints on stdout the number of states at each distance from goal and, if a filename is
 provided as a command line argument, it prints the state_map it builds to that file.
 
 Copyright (C) 2013 by the PSVN Research Group, University of Alberta
@@ -13,6 +13,7 @@ Copyright (C) 2013 by the PSVN Research Group, University of Alberta
 
 int main( int argc, char **argv )
 {
+    int64_t totalNodes, numAtD;  // counters
     state_t state, child;   // NOTE: "child" will be a predecessor of state, not a successor
     int d, ruleid;
     ruleid_iterator_t iter;
@@ -27,11 +28,18 @@ int main( int argc, char **argv )
         open.Add(0, 0, state );
     } while( next_goal_state( &state, &d ) );
 
+    totalNodes = 0;
     d = 0;
+    numAtD = 0;
     while( !open.Empty() ) {
 
-        /* get current distance from goal */
-        d = open.CurrentPriority();
+        /* get current distance from goal; since operator costs are
+           non-negative this distance is monotonically increasing */
+        if (open.CurrentPriority() > d) {
+            printf( "%"PRId64" states at distance %d\n", numAtD, d );
+            d = open.CurrentPriority();
+            numAtD = 0;
+        }
 
         /* get state */
         state = open.Top();
@@ -44,16 +52,14 @@ int main( int argc, char **argv )
         if (*best_dist < d)
             continue;
         
-/* print the distance then the state */
-//        printf("%d  ",d);
-        print_state(stdout,&state);
-        printf(" \n");
+        numAtD++;
+        totalNodes++;
 
         /* look at all predecessors of the state */
         init_bwd_iter( &iter, &state );
         while( ( ruleid = next_ruleid( &iter ) ) >= 0 ) {
             apply_bwd_rule( ruleid, &state, &child );
-            const int child_d = d + get_bwd_rule_cost( ruleid );
+            const int child_d = d + get_bwd_rule_cost( rule );
 
             /* check if either this child has not been seen yet or if
                there is a new cheaper way to get to this child. */
@@ -65,6 +71,13 @@ int main( int argc, char **argv )
             }
         }
     }
+    
+    /* print last level */
+    if (numAtD > 0) {
+        printf( "%"PRId64" states at distance %d\n", numAtD, d);
+    }
+    
+    printf( "%"PRIu64" states in total.\n", totalNodes );
     
     if( argc >= 2 ) {     /* write the state map to a file */
         file = fopen( argv[ 1 ], "w" );

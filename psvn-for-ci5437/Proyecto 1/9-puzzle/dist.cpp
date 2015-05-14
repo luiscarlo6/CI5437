@@ -45,7 +45,7 @@ int main( int argc, char **argv )
             continue;
         
 /* print the distance then the state */
-//        printf("%d  ",d);
+        printf("%d  ",d);
         print_state(stdout,&state);
         printf(" \n");
 

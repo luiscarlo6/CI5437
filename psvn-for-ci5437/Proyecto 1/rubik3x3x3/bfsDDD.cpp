@@ -21,38 +21,36 @@ int main( int argc, char **argv )
         nchars = read_state( raw_state, &state );
         //print_state( stdout, &state );
         //printf("->");
-        open.Add(0, 0, state);
+        open.Add(0, 0, state );
         state_map_add( map, &state, 0 );
         d = 0;
         while( !open.Empty() ) {
-            /* get current distance from goal */
-            d = open.CurrentPriority();
             state = open.Top();
             open.Pop();
 
-
-            const int *best_dist = state_map_get( map, &state );
-            if (best_dist != NULL || d < *best_dist){
-                state_map_add(map, &state, d);
-                if (is_goal(&state)){
-                    print_state( stdout, &state );
-                    printf("\n");
-                    open.Clear();
-                    destroy_state_map(map);
-                    map = new_state_map();
-                    break;
-                }   
-
-                 //printf("%i\n", d);
-                init_fwd_iter( &iter, &state );
-                while( ( ruleid = next_ruleid( &iter ) ) >= 0 ) {
-                    apply_fwd_rule( ruleid, &state, &child );
-                    state_map_add(map, &child, d + get_fwd_rule_cost(ruleid) );
-                    open.Add(d + get_fwd_rule_cost(ruleid ),0,child);
+            if (is_goal(&state)){
+                print_state( stdout, &state );
+                printf("\n");
+                open.Clear();
+                destroy_state_map(map);
+                map = new_state_map();
+                break;
+            }
+            //printf("%i\n", d);
+            init_fwd_iter( &iter, &state );
+            while( ( ruleid = next_ruleid( &iter ) ) >= 0 ) {
+                apply_fwd_rule( ruleid, &state, &child );
+                const int *best_dist = state_map_get( map, &child );
+                if (best_dist == NULL){
+                    d++;
+                    open.Add(d,0, child );
+                    state_map_add( map, &child, d );
                 }
-            }   
+
+            }
+
         }
     }
-    //printf("%i\n", d);
+        //printf("%i\n", d);
     return 0;
 }

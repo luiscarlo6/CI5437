@@ -108,7 +108,7 @@ int main(int argc, char *argv[])
     cout << " " << max << "\n";
 
 
-    cout << "\n# 1 state variable is the blank 'B' the others goes from 1 to 15.\n";
+    cout << "\n# 1 state variable is the blank 'B' the others goes from 1 to "<<max-1>>".\n";
     for (int i=0;i<max;i++)
         cout << "tile ";
     cout << "\n\n";
