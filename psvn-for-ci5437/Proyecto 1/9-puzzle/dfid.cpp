@@ -3,31 +3,29 @@
 #include <sys/time.h>
 
 int visit(state_t* state, int64_t d, int64_t bound){
-    int64_t ruleid,t,p;
+    int64_t ruleid;
     ruleid_iterator_t iter;
     state_t child;
     if (d > bound){
-        return d;
+        return -1;
     }
 
     if (is_goal(state)){
-        return -1;
+        return 0;
     }
-    t = 9223372036854775;
+
     init_fwd_iter( &iter, state );
     while( ( ruleid = next_ruleid( &iter ) ) >= 0 ) {
         apply_fwd_rule( ruleid, state, &child );
     //printf("bound %"PRId64" , distance %"PRId64"  state ", bound,d );
     //print_state(stdout,&child);
     //printf("\n");
-        p = visit(&child, get_fwd_rule_cost(ruleid), bound);
-        if (p == -1){
+        if (visit(&child, d + 1, bound)!=-1){
             *state = child;
-            return -1;
+            return 0;
         }
-        if (t>p) t=p;
     }
-    return t;
+    return -1;
 }
 
 
@@ -50,13 +48,14 @@ int main( int argc, char **argv )
         nchars = read_state( raw_state, &state );
         bound = 0;
         while (true){
-            d = visit(&state, 0, bound);
-            if (d==-1){
+
+            ;
+            if (visit(&state, 0, bound)!=-1){
                 print_state( stdout, &state );
                 printf("\n");
                 break;
             }
-            bound = d;
+            bound++;
         }
 
     }
