@@ -115,7 +115,7 @@ int main(int argc, char *argv[])
 
     for (int i=0; i<N;i++) {  // create the rules for flipping bits i and i+1
         for(int j=0;j<N;j++){    // there will be 4 such rules (one for each binary combination
-            currentpos = i*4 + j;
+            currentpos = i*N + j;
             for(int k=0;k<NUM_OP;k++){
                 string tstr="";       // the first i-1 variables are irrelevant
                 string tstr2="";
