@@ -19,8 +19,8 @@ int main( int argc, char **argv )
             return 0; 
         }
         nchars = read_state( raw_state, &state );
-        print_state( stdout, &state );
-        printf("->");
+        //print_state( stdout, &state );
+        //printf("->");
         open.Add(0, 0, state );
         state_map_add( map, &state, 0 );
         d = 0;
