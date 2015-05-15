@@ -1,0 +1,5 @@
+abstraction {
+  3N { 1 2 3 }
+  1 { 0 }
+  projection { P P K K K }
+}

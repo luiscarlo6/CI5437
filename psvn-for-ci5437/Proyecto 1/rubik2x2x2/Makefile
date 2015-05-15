@@ -33,6 +33,9 @@ dfid.cpp:
 dfucs.cpp:
 	cp ../codes/dfucs.cpp ./dfucs.cpp
 
+AStar.cpp:
+	cp ../codes/AStar.cpp ./AStar.cpp
+
 %.c: %.psvn  psvn2c_core.c psvn2c_state_map.c psvn2c_abstraction.c
 	../../psvn2c  $(PSVNOPT) --name=$(*F)  < $< > $@
 	rm -f ./psvn2c_core.c ./psvn2c_state_map.c ./psvn2c_abstraction.c
@@ -70,6 +73,10 @@ priority_queue.hpp:
 	$(CXX) $(OPT) dfucs.cpp -include $< -o $@
 	rm -f ./priority_queue.hpp
 
+%.AStar:  %.c AStar.cpp priority_queue.hpp
+	$(CXX) $(OPT) AStar.cpp -include $< -o $@
+	rm -f ./priority_queue.hpp
+
 .PHONY: clean
 clean:
-	rm -f dist.cpp bfsDDD.cpp ucsDDD.cpp dfid.cpp dfucs.cpp distSummary.cpp searchTree.cpp *.dist *.distSummary *.searchTree *.bfsDDD *.ucsDDD *.dfid *.o  priority_queue.hpp psvn2c_core.c psvn2c_state_map.c psvn2c_abstraction.c *~
+	rm -f dist.cpp bfsDDD.cpp ucsDDD.cpp dfid.cpp dfucs.cpp distSummary.cpp searchTree.cpp AStar.cpp *.dist *.distSummary *.searchTree *.bfsDDD *.ucsDDD *.dfid *.dfucs *.AStar *.o  priority_queue.hpp psvn2c_core.c psvn2c_state_map.c psvn2c_abstraction.c *~
