@@ -1,0 +1,62 @@
+# This file was created by genN-puzzle.cpp with the following command line parameters:
+#  4
+
+DOMAIN tile 16 B 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15   #The name of the domain 
+
+
+# number of state variables
+ 16
+
+# 1 state variable is the blank 'B' the others goes from 1 to 15.
+tile tile tile tile tile tile tile tile tile tile tile tile tile tile tile tile 
+
+B X - - - - - - - - - - - - - - => X B - - - - - - - - - - - - - -  LABEL move00_right
+B - - - X - - - - - - - - - - - => X - - - B - - - - - - - - - - -  LABEL move00_down
+- B X - - - - - - - - - - - - - => - X B - - - - - - - - - - - - -  LABEL move01_right
+- B - - - X - - - - - - - - - - => - X - - - B - - - - - - - - - -  LABEL move01_down
+X B - - - - - - - - - - - - - - => B X - - - - - - - - - - - - - -  LABEL move01_left
+- - B X - - - - - - - - - - - - => - - X B - - - - - - - - - - - -  LABEL move02_right
+- - B - - - X - - - - - - - - - => - - X - - - B - - - - - - - - -  LABEL move02_down
+- X B - - - - - - - - - - - - - => - B X - - - - - - - - - - - - -  LABEL move02_left
+- - - B - - - X - - - - - - - - => - - - X - - - B - - - - - - - -  LABEL move03_down
+- - X B - - - - - - - - - - - - => - - B X - - - - - - - - - - - -  LABEL move03_left
+X - - - B - - - - - - - - - - - => B - - - X - - - - - - - - - - -  LABEL move10_up
+- - - - B X - - - - - - - - - - => - - - - X B - - - - - - - - - -  LABEL move10_right
+- - - - B - - - X - - - - - - - => - - - - X - - - B - - - - - - -  LABEL move10_down
+- X - - - B - - - - - - - - - - => - B - - - X - - - - - - - - - -  LABEL move11_up
+- - - - - B X - - - - - - - - - => - - - - - X B - - - - - - - - -  LABEL move11_right
+- - - - - B - - - X - - - - - - => - - - - - X - - - B - - - - - -  LABEL move11_down
+- - - - X B - - - - - - - - - - => - - - - B X - - - - - - - - - -  LABEL move11_left
+- - X - - - B - - - - - - - - - => - - B - - - X - - - - - - - - -  LABEL move12_up
+- - - - - - B X - - - - - - - - => - - - - - - X B - - - - - - - -  LABEL move12_right
+- - - - - - B - - - X - - - - - => - - - - - - X - - - B - - - - -  LABEL move12_down
+- - - - - X B - - - - - - - - - => - - - - - B X - - - - - - - - -  LABEL move12_left
+- - - X - - - B - - - - - - - - => - - - B - - - X - - - - - - - -  LABEL move13_up
+- - - - - - - B - - - X - - - - => - - - - - - - X - - - B - - - -  LABEL move13_down
+- - - - - - X B - - - - - - - - => - - - - - - B X - - - - - - - -  LABEL move13_left
+- - - - X - - - B - - - - - - - => - - - - B - - - X - - - - - - -  LABEL move20_up
+- - - - - - - - B X - - - - - - => - - - - - - - - X B - - - - - -  LABEL move20_right
+- - - - - - - - B - - - X - - - => - - - - - - - - X - - - B - - -  LABEL move20_down
+- - - - - X - - - B - - - - - - => - - - - - B - - - X - - - - - -  LABEL move21_up
+- - - - - - - - - B X - - - - - => - - - - - - - - - X B - - - - -  LABEL move21_right
+- - - - - - - - - B - - - X - - => - - - - - - - - - X - - - B - -  LABEL move21_down
+- - - - - - - - X B - - - - - - => - - - - - - - - B X - - - - - -  LABEL move21_left
+- - - - - - X - - - B - - - - - => - - - - - - B - - - X - - - - -  LABEL move22_up
+- - - - - - - - - - B X - - - - => - - - - - - - - - - X B - - - -  LABEL move22_right
+- - - - - - - - - - B - - - X - => - - - - - - - - - - X - - - B -  LABEL move22_down
+- - - - - - - - - X B - - - - - => - - - - - - - - - B X - - - - -  LABEL move22_left
+- - - - - - - X - - - B - - - - => - - - - - - - B - - - X - - - -  LABEL move23_up
+- - - - - - - - - - - B - - - X => - - - - - - - - - - - X - - - B  LABEL move23_down
+- - - - - - - - - - X B - - - - => - - - - - - - - - - B X - - - -  LABEL move23_left
+- - - - - - - - X - - - B - - - => - - - - - - - - B - - - X - - -  LABEL move30_up
+- - - - - - - - - - - - B X - - => - - - - - - - - - - - - X B - -  LABEL move30_right
+- - - - - - - - - X - - - B - - => - - - - - - - - - B - - - X - -  LABEL move31_up
+- - - - - - - - - - - - - B X - => - - - - - - - - - - - - - X B -  LABEL move31_right
+- - - - - - - - - - - - X B - - => - - - - - - - - - - - - B X - -  LABEL move31_left
+- - - - - - - - - - X - - - B - => - - - - - - - - - - B - - - X -  LABEL move32_up
+- - - - - - - - - - - - - - B X => - - - - - - - - - - - - - - X B  LABEL move32_right
+- - - - - - - - - - - - - X B - => - - - - - - - - - - - - - B X -  LABEL move32_left
+- - - - - - - - - - - X - - - B => - - - - - - - - - - - B - - - X  LABEL move33_up
+- - - - - - - - - - - - - - X B => - - - - - - - - - - - - - - B X  LABEL move33_left
+
+GOAL B 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
