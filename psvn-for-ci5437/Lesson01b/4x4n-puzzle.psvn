@@ -1,7 +1,7 @@
 # This file was created by genN-puzzle.cpp with the following command line parameters:
 #  4
 
-DOMAIN tile 16 B 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  #The name of the domain 
+DOMAIN tile 16 B 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15   #The name of the domain 
 
 
 # number of state variables

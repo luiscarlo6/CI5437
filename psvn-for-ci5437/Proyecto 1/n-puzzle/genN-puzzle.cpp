@@ -101,19 +101,21 @@ int main(int argc, char *argv[])
     for (int i=1; i<argc; ++i) {
 	cout << "  " << argv[i] ;
     }
-    cout << "\n\nDOMAIN B 1 2 /* The blank space\n";
+    cout << "\n\nDOMAIN tile " << max << " B ";
+    for (int i=1;i<max;i++)  { cout << i << " "; };
+    cout << "  #The name of the domain \n";
     cout << "\n\n# number of state variables\n";
-    cout << max << "\n";
+    cout << " " << max << "\n";
 
 
-    cout << "\n# 1 state variable is the blank 'B' the others goes from 1 to 15.\n";
+    cout << "\n# 1 state variable is the blank 'B' the others goes from 1 to " << max-1 << ".\n";
     for (int i=0;i<max;i++)
-        cout << "15N ";
+        cout << "tile ";
     cout << "\n\n";
 
     for (int i=0; i<N;i++) {  // create the rules for flipping bits i and i+1
         for(int j=0;j<N;j++){    // there will be 4 such rules (one for each binary combination
-            currentpos = i*4 + j;
+            currentpos = i*N + j;
             for(int k=0;k<NUM_OP;k++){
                 string tstr="";       // the first i-1 variables are irrelevant
                 string tstr2="";
@@ -123,7 +125,7 @@ int main(int argc, char *argv[])
                     if(k == 0){     //We use 0 for the blank up move 
                         if(i == 0)
                             break;
-                        if(l == currentpos - 4){
+                        if(l == currentpos - N){
                             tstr = tstr + "X ";
                             tstr2 = tstr2 + "B ";
                             label = " LABEL move" + convertInt(i) + convertInt(j) + "_up";
@@ -131,7 +133,7 @@ int main(int argc, char *argv[])
                             continue;
                         }
                     }else if(k == 1){ // We use 1 to indicate the blank moves to the right
-                        if(j == max -1)
+                        if(j == N -1)
                             break;
                         if(l == currentpos + 1){
                             tstr = tstr + "X ";
@@ -162,7 +164,7 @@ int main(int argc, char *argv[])
                         }
                     }
                     if(l == currentpos){ // if the position of the str match the B position
-                        tstr = tstr + "0 ";
+                        tstr = tstr + "B ";
                         tstr2 = tstr2 + "X ";
                     }else{
                         tstr = tstr + "- ";
