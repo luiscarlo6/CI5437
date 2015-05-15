@@ -1,18 +1,17 @@
 /*
- * Generates PSVN for the Arrow puzzle.
- * Uses the "standard" encoding of the puzzle, which has one binary state variable for
- * 	each arrow indicating if the arrow is pointing down (0) or up (1).
+ * Generates PSVN for the n-puzzle puzzle.
+ * Uses the "standard" encoding of the puzzle, which has one state variable for
+ * 	each tile order.
  * Supports two cost models:
  *	-- unifom (all operators cost the same)
- *	-- random (each operator's cost is generated uniformly at random in a user-specified range)
- * originally written by Meysam Bastani
- * Edited by Shahab Jabbari Arfaee
- * Edited by Rob Holte
+ *	-- Vertical move on the blan tile cost 2, horizontal move cost 1.
+ * originally written by Gabriel Freites and Luiscarlo Rivera
 */
 
 #include <stdio.h>
 #include <iostream>
 #include <string>
+#include <string.h>
 #include <sstream>
 #include <stdlib.h>
 #include <assert.h>
@@ -30,68 +29,46 @@ string convertInt(int number)
 int main(int argc, char *argv[])
 {
     int N; // the size of the puzle
-    int seed, mincost, maxcost, range, cost;
+    int seed, h, v, cost;
     bool printcost;
     int currentpos, max, print;
     div_t divresult;
 
 
 /******* EXTRACT COMMAND LINE ARGUMENTS ************/
-
-    if ( (argc < 2) || (argc == 4) || (argc > 5) ) {
-      cerr << "You must provide 1, 2, or 4 integers on the command line." << endl;
+    if ( (argc < 2) || (argc > 3) ) {
+      cerr << "You must provide 1 or 2 integers on the command line." << endl;
       cerr << "The first integer is the length of the puzzle." << endl;
       cerr << "If there are no other integers, operator costs will all be 1." << endl;
-      cerr << "If there is one other integer, operator costs will all be that value." << endl;
-      cerr << "If there are three additional integers, operator costs will be generated at random, and" << endl;
-      cerr << "these three integers are: the minimum cost, the maximum cost, and the random number seed." << endl;
+      cerr << "If there is one other integer, if it's a the cost model is unitary." << endl;
+      cerr << "If it's b the horizontal moves cost 1 and the vertical moves cost 2, " << endl;
+      cerr << "just the blank tile movesasd." << endl;
       exit(0);
     }
-
     if( (!sscanf( argv[1], "%d", &N )) 
           || N <= 0 ) {
-        cerr << "bad length of puzzle: " << argv[1] << endl;
+        cerr << "bad length of puzzle: " << argv[2] << endl;
         exit( -1 );
     }
-    if (argc == 2) {
-        mincost = maxcost = 1;
-    } else if (argc == 3) { // uniform costs of a specified value
-        if( (!sscanf( argv[2], "%d", &mincost )) 
-              || mincost < 0 ) {
-            cerr << "bad operator cost: " << argv[2] << endl;
-            exit( -1 );
+    if (argc == 3) {
+        if(strcmp(argv[2], "b") != 0){
+            h = 1;
+            v = 2;
+        }else if(strcmp(argv[2],"a") != 0){
+            h = v = 1;
+        }else{
+            cerr << "You must provide 1 or 2 integers on the command line." << endl;
+            cerr << "The first integer is the length of the puzzle." << endl;
+            cerr << "If there are no other integers, operator costs will all be 1." << endl;
+            cerr << "If there is one other integer, if it's 1 the cost model is unitary." << endl;
+            cerr << "If it's 2 the horizontal moves cost 1 and the vertical moves cost 2, " << endl;
+            cerr << "just the blank tile moves asd." << endl;
+            exit(0);
         }
-        maxcost = mincost;
-    } else {
-        assert(argc==5);  // randomly generated costs
-        if( (!sscanf( argv[2], "%d", &mincost )) 
-              || mincost < 0 ) {
-            cerr << "bad minimum operator cost: " << argv[2] << endl;
-            exit( -1 );
-        }
-        if( (!sscanf( argv[ 3 ], "%d", &maxcost )) 
-              || maxcost < 0 ) {
-            cerr << "bad maximum operator cost: " << argv[3] << endl;
-            exit( -1 );
-        }
-        if( ( mincost > maxcost )) {
-            cerr << "minimum cost must be less than maximum cost" << endl;
-            exit( -1 );
-        }
-        if( (!sscanf( argv[4], "%d", &seed )) 
-              || seed < 2 ) {
-            cerr << "bad random seed (must be 2 or larger): " << argv[4] << endl;
-            exit( -1 );
-        }
+    }else{
+        h = v = 0;
     }
 
-    range = maxcost-mincost+1;
-    if (range == 1) {     // if range==1 we have uniform costs all equal to mincost
-        cost = mincost;   
-    } else {
-        srand(seed);   // initialize the random number generator
-    }
-    printcost = (range > 1) || (mincost > 1) ;
     max = N*N;
 
 /******* CREATE THE PSVN FILE ************/
@@ -129,6 +106,7 @@ int main(int argc, char *argv[])
                             tstr = tstr + "X ";
                             tstr2 = tstr2 + "B ";
                             label = " LABEL move" + convertInt(i) + convertInt(j) + "_up";
+                            cost = v;
                             print = 1;
                             continue;
                         }
@@ -139,6 +117,7 @@ int main(int argc, char *argv[])
                             tstr = tstr + "X ";
                             tstr2 = tstr2 + "B ";
                             label = " LABEL move" + convertInt(i) + convertInt(j) + "_right";
+                            cost = h;
                             print = 1;
                             continue;
                         }
@@ -149,6 +128,7 @@ int main(int argc, char *argv[])
                             tstr = tstr + "X ";
                             tstr2 = tstr2 + "B ";
                             label = " LABEL move" + convertInt(i) + convertInt(j) + "_down";
+                            cost = v;
                             print = 1;
                             continue;
                         }
@@ -159,6 +139,7 @@ int main(int argc, char *argv[])
                             tstr = tstr + "X ";
                             tstr2 = tstr2 + "B ";
                             label = " LABEL move" + convertInt(i) + convertInt(j) + "_left";
+                            cost = h;
                             print = 1;
                             continue;
                         }
@@ -173,6 +154,8 @@ int main(int argc, char *argv[])
                 }
                 if(print==1){
                     cout << tstr << "=> " << tstr2 << label;
+                    if(cost != 0)
+                        cout << " COST " << convertInt(cost);
                     //cout << "  LABEL Flip_"+convertInt(i+1) << "_" << convertInt(i+2);  // the arrows are numbered from 1, not 0
                     //if (printcost) { cout << " COST " << convertInt(cost); }
                     cout << endl ;

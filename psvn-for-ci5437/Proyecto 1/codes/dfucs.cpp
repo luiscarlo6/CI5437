@@ -4,7 +4,7 @@
 #include <algorithm>    // std::min
 
 int64_t visit(state_map_t* map, state_t* state, int64_t *bound){
-    int64_t ruleid, child_cost, state_cost, old_bound;
+    int64_t ruleid, child_cost, state_cost;
     ruleid_iterator_t iter;
     state_t child;
     state_cost = *state_map_get(map, state);
@@ -34,7 +34,7 @@ int64_t visit(state_map_t* map, state_t* state, int64_t *bound){
         printf("\n");
         if(child_cost > *bound)
             *bound = (int64_t)child_cost;
-        old_bound = visit(map, state, bound);
+        visit(map, state, bound);
     }
     return *bound;
 }
